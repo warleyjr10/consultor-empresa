@@ -1,7 +1,5 @@
 package com.warley.consultor.model;
 
-import java.io.Serializable;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,8 +8,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "empresa")
-public class Empresa{
-	
+public class Empresa {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -20,7 +18,7 @@ public class Empresa{
 	private String numeroDeFuncionarios;
 	private String regiaoBrasil;
 	private String setorAtuacao;
-	
+
 	public Empresa() {
 		super();
 		this.id = id;
@@ -79,5 +77,4 @@ public class Empresa{
 		this.setorAtuacao = setorAtuacao;
 	}
 
-	
 }
