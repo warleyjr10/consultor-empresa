@@ -30,7 +30,25 @@ public class EmpresaController {
 
 		return modelAndView;
 	}
+	
+	@GetMapping("/listarAntiga")
+	public ModelAndView pesquisarEmpresaMaisOld() {
+		ModelAndView modelAndView = new ModelAndView("antiga");
+		modelAndView.addObject("empresas", dados.pesquisarEmpresaMaisAntiga());
+		modelAndView.addObject("empresa", new Empresa());
 
+		return modelAndView;
+	}
+
+	@GetMapping("/listarSetorAtuacao")
+	public ModelAndView pesquisarRegiaoMaisIndustria() {
+		ModelAndView modelAndView = new ModelAndView("setorAtuacao");
+		modelAndView.addObject("empresas", dados.pesquisarRegiaoMaisIndustrial());
+		modelAndView.addObject("empresa", new Empresa());
+
+		return modelAndView;
+	}
+	
 	@GetMapping("/novo")
 	public String Cadastrar(Model model) {
 		model.addAttribute("empresas", new Empresa());

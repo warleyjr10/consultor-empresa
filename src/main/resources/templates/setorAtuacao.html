@@ -13,36 +13,27 @@ div {text-align: center;}
 </head>
 <body>
 	<div class="w-auto p-3">
-	<h1>Consulta Empresas</h1>
+	<h1>Empresas mais antigas</h1>
 		<table class="table" style="height: 10px;">
 			<thead>
 				<tr>
-					<th scope="col">ID</th>
-					<th scope="col">Nome da empresa</th>
-					<th scope="col">Data de fundação</th>
-					<th scope="col">Número de funcionários</th>
 					<th scope="col">Região do brasil</th>
 					<th scope="col">Setor de atuação</th>
+					<th scope="col">Quantidade de Empresas</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="empresa:${empresas}">
-					<td th:text="${empresa.id}"></td>
-					<td th:text="${empresa.nomeDaEmpresa}"></td>
-					<td th:text="${empresa.dataDeFundacao}"></td>
-					<td th:text="${empresa.numeroDeFuncionarios}"></td>
+
+				<tr th:each="empresa:${empresas}">
 					<td th:text="${empresa.regiaoBrasil}"></td>
 					<td th:text="${empresa.setorAtuacao}"></td>
+					<td th:text="${empresa.quantidadeRegiaoMaisIndustrial}"></td>
 					<td>
-					<a class="btn btn-warning" th:href="@{/editar/}+${empresa.id}" type="submit">Editar</a>
-					<a class="btn btn-danger" th:href="@{/delete/}+${empresa.id}" type="submit">Excluir</a></td>
 				</tr>
 			</tbody>
 		</table>
-		<a class="btn btn-primary" role="button" type="button" th:href="@{/novo}">Cadastrar Nova Empresa</a>
 		<a class="btn btn-primary" role="button" type="button" th:href="@{/listar}">Listar todas as Empresas</a>
-		<a class="btn btn-primary" role="button" type="button" th:href="@{/listarAntiga}">Listar Empresa Mais Antiga</a>
-		<a class="btn btn-primary" role="button" type="button" th:href="@{/listarSetorAtuacao}">Listar Setor Atuação</a>
 	</div>
 
 </body>
