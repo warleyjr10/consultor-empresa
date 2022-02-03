@@ -1,12 +1,11 @@
 package com.warley.consultor.controller;
 
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +26,6 @@ public class EmpresaController {
 		ModelAndView modelAndView = new ModelAndView("index");
 		modelAndView.addObject("empresas", dados.findAll());
 		modelAndView.addObject("empresa", new Empresa());
-
 		return modelAndView;
 	}
 	
@@ -36,7 +34,6 @@ public class EmpresaController {
 		ModelAndView modelAndView = new ModelAndView("antiga");
 		modelAndView.addObject("empresas", dados.pesquisarEmpresaMaisAntiga());
 		modelAndView.addObject("empresa", new Empresa());
-
 		return modelAndView;
 	}
 
@@ -56,20 +53,21 @@ public class EmpresaController {
 	}
 
 	@PostMapping("/save")
-	public String salvar(Empresa empresa) {
-		this.dados.save(empresa);
-
+	public String salvar(@ModelAttribute("empresas") Empresa empresa) {
+		dados.save(empresa);
 		return "redirect:/listar";
 	}
 
 	@GetMapping("/editar/{id}")
-	public String editar(@PathVariable Long id, Model model) {
-		Optional<Empresa> editar = dados.findById(id);
-		model.addAttribute("empresas", editar);
-		return "form";
+	public ModelAndView pesquisarEditEmpresa(@PathVariable(value = "id") Long id) {
+		ModelAndView editarView = new ModelAndView("form_editar");
+		Empresa empresa = dados.findEmpresaById(id);
+		editarView.addObject("empresas", empresa);
+		
+		return editarView;
 	}
-
-	@DeleteMapping("/delete/{id}")
+	
+	@GetMapping("/delete/{id}")
 	public String deletar(Model model, @PathVariable Long id) {
 		dados.deleteById(id);
 		return "redirect:/listar";
