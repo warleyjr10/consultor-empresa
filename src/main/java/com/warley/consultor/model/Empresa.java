@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "empresa")
@@ -18,7 +19,10 @@ public class Empresa {
 	private String numeroDeFuncionarios;
 	private String regiaoBrasil;
 	private String setorAtuacao;
-	private String quantidadeRegiaoMaisIndustrial;
+	@Transient
+	private Long quantidade;
+	@Transient
+	private Long numero;
 	
 	public Empresa() {
 		super();
@@ -28,7 +32,11 @@ public class Empresa {
 		this.numeroDeFuncionarios = numeroDeFuncionarios;
 		this.regiaoBrasil = regiaoBrasil;
 		this.setorAtuacao = setorAtuacao;
-		this.quantidadeRegiaoMaisIndustrial = quantidadeRegiaoMaisIndustrial;
+		this.quantidade = quantidade;
+	}
+	public Empresa(Long quantidade, Long numero) {
+		this.quantidade = quantidade;
+		this.numero = numero;
 	}
 
 	public Long getId() {
@@ -79,12 +87,20 @@ public class Empresa {
 		this.setorAtuacao = setorAtuacao;
 	}
 
-	public String getQuantidadeRegiaoMaisIndustrial() {
-		return quantidadeRegiaoMaisIndustrial;
+	public Long getQuantidade() {
+		return quantidade;
 	}
 
-	public void setQuantidadeRegiaoMaisIndustrial(String quantidadeRegiaoMaisIndustrial) {
-		this.quantidadeRegiaoMaisIndustrial = quantidadeRegiaoMaisIndustrial;
+	public void setQuantidade(Long quantidade) {
+		this.quantidade = quantidade;
+	}
+	
+	public Long getNumero() {
+		return numero;
+	}
+
+	public void setNumero(Long numero) {
+		this.numero = numero;
 	}
 	
 }

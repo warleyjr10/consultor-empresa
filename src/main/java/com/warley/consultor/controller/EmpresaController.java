@@ -37,8 +37,24 @@ public class EmpresaController {
 		return modelAndView;
 	}
 
+	@GetMapping("/listarNumFuncionarios")
+	public ModelAndView pesquisarRegiaoNumFuncionarios() {
+		ModelAndView modelAndView = new ModelAndView("numFuncionarios");
+		modelAndView.addObject("empresas", dados.pesquisarRegiaoNumFuncionarios());
+		modelAndView.addObject("empresa", new Empresa());
+		return modelAndView;
+	}
+	
+	@GetMapping("/listarNumeroSetorAtuacao")
+	public ModelAndView pesquisarNumEmpresasSetor() {
+		ModelAndView modelAndView = new ModelAndView("numeroSetor");
+		modelAndView.addObject("empresas", dados.pesquisarNumEmpresasSetor());
+		modelAndView.addObject("empresa", new Empresa());
+		return modelAndView;
+	}
+	
 	@GetMapping("/listarSetorAtuacao")
-	public ModelAndView pesquisarRegiaoMaisIndustria() {
+	public ModelAndView pesquisarRegiaoMaisIndustrial() {
 		ModelAndView modelAndView = new ModelAndView("setorAtuacao");
 		modelAndView.addObject("empresas", dados.pesquisarRegiaoMaisIndustrial());
 		modelAndView.addObject("empresa", new Empresa());

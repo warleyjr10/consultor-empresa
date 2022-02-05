@@ -20,10 +20,10 @@ public interface EmpresaRepository extends JpaRepository<Empresa, Long> {
 	@Query(value = "SELECT * FROM empresa.empresa ORDER BY data_de_fundacao ASC", nativeQuery = true)
 	List<Empresa> pesquisarEmpresaMaisAntiga();
 	//A região do brasil que tem maior número de empresas do setor Industrial
-	@Query(value = "SELECT *, count(setor_atuacao) as quantidade_regiao_mais_industrial FROM empresa.empresa WHERE setor_atuacao LIKE 'Industrial' GROUP BY regiao_brasil", nativeQuery = true)
+	@Query(value = "SELECT *, count(setor_atuacao) as quantidade FROM empresa.empresa WHERE setor_atuacao LIKE 'Industrial' GROUP BY regiao_brasil", nativeQuery = true)
 	List<Empresa> pesquisarRegiaoMaisIndustrial();
 	//O número de empresas de cada setor de atuação em ordem decrescente
-	@Query(value = "SELECT setor_atuacao, count(*) as numero_empresas_setor FROM empresa.empresa GROUP BY setor_atuacao ORDER BY count(*) DESC", nativeQuery = true)
+	@Query(value = "SELECT setor_atuacao,id,nome_da_empresa,numero_de_funcionarios,data_de_fundacao,regiao_brasil, count(*) as numero FROM empresa.empresa GROUP BY setor_atuacao ORDER BY count(*) DESC", nativeQuery = true)
 	List<Empresa> pesquisarNumEmpresasSetor();
 	//O número total de funcionários de todas as empresas
 	@Query(value = "SELECT *, SUM(numero_de_funcionarios) as numero_total_empresas FROM empresa.empresa;", nativeQuery = true)

@@ -24,11 +24,9 @@ div {text-align: center;}
 			</thead>
 			<tbody>
 				<tr th:each="empresa:${empresas}">
-
-				<tr th:each="empresa:${empresas}">
 					<td th:text="${empresa.regiaoBrasil}"></td>
 					<td th:text="${empresa.setorAtuacao}"></td>
-					<td th:text="${empresa.quantidadeRegiaoMaisIndustrial}"></td>
+					<td th:text="${empresa.quantidade}"></td>
 					<td>
 				</tr>
 			</tbody>
