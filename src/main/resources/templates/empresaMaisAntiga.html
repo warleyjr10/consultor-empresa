@@ -13,18 +13,26 @@ div {text-align: center;}
 </head>
 <body>
 	<div class="w-auto p-3">
-	<h1>Numero de Empresas de cada Setor</h1>
+	<h1>Empresa mais antiga</h1>
 		<table class="table" style="height: 10px;">
 			<thead>
 				<tr>
+					<th scope="col">ID</th>
+					<th scope="col">Nome da empresa</th>
+					<th scope="col">Data de fundação</th>
+					<th scope="col">Número de funcionários</th>
+					<th scope="col">Região do brasil</th>
 					<th scope="col">Setor de atuação</th>
-					<th scope="col">Numero</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="empresa:${empresas}">
+					<td th:text="${empresa.id}"></td>
+					<td th:text="${empresa.nome}"></td>
+					<td th:text="${empresa.dataFundacao}"></td>
+					<td th:text="${empresa.numeroFuncionarios}"></td>
+					<td th:text="${empresa.regiaoBrasil}"></td>
 					<td th:text="${empresa.setorAtuacao}"></td>
-					<td th:text="${empresa.numero}"></td>
 					<td>
 				</tr>
 			</tbody>

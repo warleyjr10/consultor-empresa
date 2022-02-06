@@ -28,9 +28,9 @@ div {text-align: center;}
 			<tbody>
 				<tr th:each="empresa:${empresas}">
 					<td th:text="${empresa.id}"></td>
-					<td th:text="${empresa.nomeDaEmpresa}"></td>
-					<td th:text="${empresa.dataDeFundacao}"></td>
-					<td th:text="${empresa.numeroDeFuncionarios}"></td>
+					<td th:text="${empresa.nome}"></td>
+					<td th:text="${empresa.dataFundacao}"></td>
+					<td th:text="${empresa.numeroFuncionarios}"></td>
 					<td th:text="${empresa.regiaoBrasil}"></td>
 					<td th:text="${empresa.setorAtuacao}"></td>
 					<td>
@@ -41,11 +41,9 @@ div {text-align: center;}
 		</table>
 		<a class="btn btn-primary" role="button" type="button" th:href="@{/novo}">Cadastrar Nova Empresa</a>
 		<a class="btn btn-primary" role="button" type="button" th:href="@{/listar}">Listar todas as Empresas</a>
-		<a class="btn btn-primary" role="button" type="button" th:href="@{/listarAntiga}">Listar Empresa Mais Antiga</a>
-				<a class="btn btn-primary" role="button" type="button" th:href="@{/listarNumFuncionarios}">Listar Número de Funcionarios</a>
-						<a class="btn btn-primary" role="button" type="button" th:href="@{/listarNumeroSetorAtuacao}">Numero Empresa Setor</a>
-		<a class="btn btn-primary" role="button" type="button" th:href="@{/listarSetorAtuacao}">Listar Setor Atuação</a>
+		<a class="btn btn-primary" role="button" type="button" th:href="@{/listarEmpresaMaisAntiga}">Listar Empresa Mais Antiga</a>
+		<!-- <a class="btn btn-primary" role="button" type="button" th:href="@{/listarNumeroTotalTodasEmpresas}">Listar Numero total todas as empresas</a> 
+		<a class="btn btn-primary" role="button" type="button" th:href="@{/listarRegiaoComMaisFuncionarios}">Listar Região com maior numero de funcionarios</a> -->
 	</div>
-
 </body>
 </html>

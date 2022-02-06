@@ -29,43 +29,34 @@ public class EmpresaController {
 		return modelAndView;
 	}
 	
-	@GetMapping("/listarAntiga")
+	@GetMapping("/listarEmpresaMaisAntiga")
 	public ModelAndView pesquisarEmpresaMaisOld() {
-		ModelAndView modelAndView = new ModelAndView("antiga");
+		ModelAndView modelAndView = new ModelAndView("empresaMaisAntiga");
 		modelAndView.addObject("empresas", dados.pesquisarEmpresaMaisAntiga());
 		modelAndView.addObject("empresa", new Empresa());
 		return modelAndView;
 	}
 
-	@GetMapping("/listarNumFuncionarios")
-	public ModelAndView pesquisarRegiaoNumFuncionarios() {
-		ModelAndView modelAndView = new ModelAndView("numFuncionarios");
-		modelAndView.addObject("empresas", dados.pesquisarRegiaoNumFuncionarios());
+	@GetMapping("/listarRegiaoComMaisFuncionarios")
+	public ModelAndView pesquisarRegiaoComMaisFuncionarios() {
+		ModelAndView modelAndView = new ModelAndView("regiaoComMaisFuncionarios");
+		modelAndView.addObject("empresas", dados.pesquisarRegiaoComMaisFuncionarios());
 		modelAndView.addObject("empresa", new Empresa());
 		return modelAndView;
 	}
 	
-	@GetMapping("/listarNumeroSetorAtuacao")
-	public ModelAndView pesquisarNumEmpresasSetor() {
-		ModelAndView modelAndView = new ModelAndView("numeroSetor");
-		modelAndView.addObject("empresas", dados.pesquisarNumEmpresasSetor());
+	@GetMapping("/listarNumeroTotalTodasEmpresas")
+	public ModelAndView pesquisarNumTotalFuncionarios() {
+		ModelAndView modelAndView = new ModelAndView("numeroTotalTodasEmpresas");
+		modelAndView.addObject("empresas", dados.pesquisarNumTotalFuncionarios());
 		modelAndView.addObject("empresa", new Empresa());
-		return modelAndView;
-	}
-	
-	@GetMapping("/listarSetorAtuacao")
-	public ModelAndView pesquisarRegiaoMaisIndustrial() {
-		ModelAndView modelAndView = new ModelAndView("setorAtuacao");
-		modelAndView.addObject("empresas", dados.pesquisarRegiaoMaisIndustrial());
-		modelAndView.addObject("empresa", new Empresa());
-
 		return modelAndView;
 	}
 	
 	@GetMapping("/novo")
 	public String Cadastrar(Model model) {
 		model.addAttribute("empresas", new Empresa());
-		return "form";
+		return "cadastro";
 	}
 
 	@PostMapping("/save")
