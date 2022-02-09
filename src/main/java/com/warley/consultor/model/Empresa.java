@@ -10,18 +10,11 @@ import javax.persistence.NamedNativeQuery;
 import javax.persistence.SqlResultSetMapping;
 import javax.persistence.Table;
 
-import com.warley.consultor.model.RegiaoComMaisFuncionariosDTO;
-
-
 @Entity
 @Table(name = "empresa")
-@NamedNativeQuery(name = "Empresa.pesquisarRegiaoComMaisFuncionarios",
-query = "SELECT regiao_brasil as regiaoBrasil , sum(numero_funcionarios) as quantidadeFuncionarios from empresa.empresa GROUP BY regiao_brasil ORDER BY quantidadeFuncionarios desc",
-resultSetMapping = "Mapping.RegiaoComMaisFuncionariosDTO")
-@SqlResultSetMapping(name = "Mapping.RegiaoComMaisFuncionariosDTO", 
-classes = @ConstructorResult(targetClass = RegiaoComMaisFuncionariosDTO.class, 
-columns = {@ColumnResult(name = "regiaoBrasil"), 
-		   @ColumnResult(name = "quantidadeFuncionarios") }))
+
+
+
 public class Empresa {
 
 	@Id
@@ -32,6 +25,7 @@ public class Empresa {
 	private int numeroFuncionarios;
 	private String regiaoBrasil;
 	private String setorAtuacao;
+	private Long quantidade;
 	
 	public Empresa() {
 		super();
@@ -77,6 +71,12 @@ public class Empresa {
 	}
 	public void setSetorAtuacao(String setorAtuacao) {
 		this.setorAtuacao = setorAtuacao;
+	}
+	public Long getQuantidade() {
+		return quantidade;
+	}
+	public void setQuantidade(Long quantidade) {
+		this.quantidade = quantidade;
 	}
 
 
