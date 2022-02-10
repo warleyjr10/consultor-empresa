@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.warley.consultor.model.Empresa;
+import com.warley.consultor.model.*;
 import com.warley.consultor.repository.*;
 
 @Controller
@@ -21,6 +21,7 @@ public class EmpresaController {
 	@Autowired
 	private EmpresaRepository dados;
 
+	
 	@GetMapping("/listar")
 	public ModelAndView listar() {
 		ModelAndView modelAndView = new ModelAndView("index");

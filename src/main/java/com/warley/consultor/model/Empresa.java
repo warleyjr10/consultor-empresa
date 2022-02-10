@@ -13,8 +13,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "empresa")
 
-
-
 public class Empresa {
 
 	@Id
@@ -25,7 +23,6 @@ public class Empresa {
 	private int numeroFuncionarios;
 	private String regiaoBrasil;
 	private String setorAtuacao;
-	private Long quantidade;
 	
 	public Empresa() {
 		super();
@@ -72,12 +69,5 @@ public class Empresa {
 	public void setSetorAtuacao(String setorAtuacao) {
 		this.setorAtuacao = setorAtuacao;
 	}
-	public Long getQuantidade() {
-		return quantidade;
-	}
-	public void setQuantidade(Long quantidade) {
-		this.quantidade = quantidade;
-	}
-
 
 }

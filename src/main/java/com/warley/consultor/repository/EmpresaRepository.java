@@ -29,8 +29,4 @@ public interface EmpresaRepository extends JpaRepository<Empresa, Long> {
 	// O número de empresas de cada setor de atuação em ordem decrescente
 	@Query(value = "SELECT setor_atuacao, count(*) as quantidade from empresa.empresa GROUP BY setor_atuacao ORDER BY quantidade desc", nativeQuery = true)
 	List<Empresa> pesquisarNumEmpresasSetor();
-
-	// O número total de funcionários de todas as empresas
-	@Query(value = "SELECT * sum(numero_funcionarios) as quantidade FROM empresa.empresa order by numero_funcionarios desc", nativeQuery = true)
-	List<Empresa> pesquisarNumTotalFuncionarios();
 }
