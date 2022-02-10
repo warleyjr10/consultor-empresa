@@ -63,7 +63,6 @@ public class EmpresaController {
 		ModelAndView editarView = new ModelAndView("form_editar");
 		Empresa empresa = dados.getById(id);
 		editarView.addObject("empresas", empresa);
-		
 		return editarView;
 	}
 	

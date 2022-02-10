@@ -14,10 +14,7 @@ public interface EmpresaRepository extends JpaRepository<Empresa, Long> {
 	
 	public Empresa findEmpresaById(long id);
 
-	// Nome da região do brasil que apresenta maior número de funcionários, e o número de funcionários
-	@Query(value ="SELECT regiao_brasil, sum(numero_de_funcionarios) AS quantidade_funcionarios from empresa.empresa GROUP BY regiao_brasil ORDER BY quantidade_funcionarios desc", nativeQuery = true)
-	List<Empresa> pesquisarRegiaoComMaisFuncionarios();
-	
+
 	//  O nome da empresa mais antiga - OK;
 	@Query(value = "SELECT * FROM empresa.empresa ORDER BY data_fundacao ASC limit 1", nativeQuery = true)
 	List<Empresa> pesquisarEmpresaMaisAntiga();
