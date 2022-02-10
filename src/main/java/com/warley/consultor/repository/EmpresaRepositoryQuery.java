@@ -19,7 +19,7 @@ public interface EmpresaRepositoryQuery extends JpaRepository<EmpresaQuery, Long
 	//
 	@Modifying
 	@Transactional
-	@Query(value = "INSERT INTO empresa.empresaquery (quantidade) SELECT sum(numero_funcionarios) as quantidade FROM empresa.empresa", nativeQuery = true)
+	@Query(value = "UPDATE empresa.empresaquery SET quantidade = (SELECT sum(numero_funcionarios) as quantidade FROM empresa.empresa) WHERE id = '1'", nativeQuery = true)
 	int pesquisarNumTotalFuncionarios();
 	
 	@Query(value = "SELECT id, quantidade FROM empresa.empresaquery order by quantidade DESC limit 1", nativeQuery = true)
