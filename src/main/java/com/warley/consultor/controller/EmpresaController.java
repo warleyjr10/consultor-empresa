@@ -59,12 +59,20 @@ public class EmpresaController {
 	}
 
 	@GetMapping("/editar/{id}")
-	public ModelAndView pesquisarEditEmpresa(@PathVariable(value = "id") Long id) {
+	public ModelAndView editar(@PathVariable("id") Long id) {
 		ModelAndView editarView = new ModelAndView("form_editar");
-		Empresa empresa = dados.findEmpresaById(id);
+		Empresa empresa = dados.getById(id);
 		editarView.addObject("empresas", empresa);
 		
 		return editarView;
+	}
+	
+	@PostMapping("/alterar")
+	public ModelAndView alterar(Empresa empresa) {
+	ModelAndView modelAndView = new ModelAndView();
+	dados.save(empresa);
+	modelAndView.setViewName("redirect:/listar");
+	return modelAndView;
 	}
 	
 	@GetMapping("/delete/{id}")

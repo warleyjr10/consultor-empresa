@@ -13,9 +13,10 @@
 <title>Cadastrar Empresa</title>
 </head>
 <body>
-	<form class="formulario" th:action="@{/save}" th:object=${empresas}
+	<form class="formulario" th:action="@{/alterar}" th:object=${empresas}
 		method="POST">
 		<h4>Cadastre a nova Empresa abaixo:</h4><br>
+		<input type="hidden" th:field="*{id}">
 		<div class="container">
 			<div class="row">
 			  <div class="col">
